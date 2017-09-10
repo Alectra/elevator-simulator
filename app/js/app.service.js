@@ -49,29 +49,6 @@
 			return elevators;
 		};
 
-		var addElevator = function (tmpId) {
-			var tmpName = tmpId + 1;
-			return {
-				id: tmpId,
-				name: tmpName,
-				totalTrips: 0,
-				destinationFloor: 0,
-				floorsPassed: 0,
-				currentFloor: 1,
-				isMoving: false,
-				needsService: true,
-				isDoorOpen: false
-			};
-		};
-		var addFloor = function (tmpId) {
-			var tmpName = tmpId + 1;
-			return {
-				id: tmpId,
-				name: tmpName,
-				isWaiting: false
-			};
-		};
-
 		self.submitSimulation = function (numFloors, numElevators, floorSpeed) {
 			data = 'floors:'+numFloors + ' elevators:' + numElevators + ' speed:' + floorSpeed;
 			simData.numFloors = numFloors;
@@ -130,7 +107,7 @@
 
 			// if no mopving elevator will pass this floor, find the closest stopped one
 			if (!elevatorFound) {
-				// find closeset elevator that is stopped
+				// find closeset elevator that is stopped && doesn't need service
 			}
 
 			// add an elevator stop at floorfloorNum
@@ -142,14 +119,59 @@
 			*/
 		};
 
+		// FLOORS
+		var addFloor = function (tmpId) {
+			var tmpName = tmpId + 1;
+			return {
+				id: tmpId,
+				name: tmpName,
+				isWaiting: false
+			};
+		};
+		self.updateFloorData = function (floorId, floorIsWaiting) {
+			floors[floorId].isWaiting = floorIsWaiting;
+		};
+
+		// ELEVATORS
+		var addElevator = function (tmpId) {
+			var tmpName = tmpId + 1;
+			return {
+				id: tmpId,
+				name: tmpName,
+				totalTrips: 0,
+				destinationFloor: 0,
+				floorsPassed: 0,
+				currentFloor: 1,
+				isMoving: false,
+				needsService: true,
+				isDoorOpen: false
+			};
+		};
+		self.passedFloor = function (elevatorId) {
+			elevators[elevatorId].passedFloor++;
+		};
+		self.tripComplete = function (elevatorId) {
+			elevators[elevatorId].totalTrips++;
+			if (elevators[elevatorId].totalTrips >= 100)
+				elevators[elevatorId].needsService = true;
+		};
+		self.openDoors = function (elevatorId) {
+			elevators[elevatorId].isDoorOpen = true;
+		};
+		self.closeDoors = function (elevatorId) {
+			elevators[elevatorId].isDoorOpen = false;
+		};
+
+		// initialize simulation
 		self.resetSimulation();
 
-		// var countdown = 0;
-		// self.startCountdown = function (val) {
-		// 	countdown = val;
-		// 	$timeout(function () { countdown--; }, 1000);
-		// 	return countdown;
-		// };
+		// basic timer function
+			// var countdown = 0;
+			// self.startCountdown = function (val) {
+			// 	countdown = val;
+			// 	$timeout(function () { countdown--; }, 1000);
+			// 	return countdown;
+			// };
 
 
 	});
