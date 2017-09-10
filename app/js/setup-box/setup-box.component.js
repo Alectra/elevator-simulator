@@ -7,20 +7,16 @@
 			var vm = this;
 
 			vm.simData = '';
-			vm.simulation = {
-				numFloors: '',
-				numElevators: '',
-				floorSpeed: ''
-			};
+			vm.simulation = null;
 			vm.submit = function () {
 				// vm.simData = vm.simulation.first + ' ' + vm.simulation.last;
 				vm.simData = appService.submitSimulation(vm.simulation.numFloors, vm.simulation.numElevators, vm.simulation.floorSpeed);
 			};
 
-			// vm.things = null;
-			// vm.$onInit = function () {
-			// 	vm.things = appService.getAllThings();
-            // }
+			// vm.data = null;
+			vm.$onInit = function () {
+				vm.simulation = appService.getSimData();
+			};
         },
 		templateUrl: 'js/setup-box/setup-box.component.html'
 	});

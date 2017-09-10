@@ -5,22 +5,15 @@
 		controllerAs: 'vm',
         controller: function (appService) {
 			var vm = this;
+			vm.floors = null;
 
-			// vm.simData = '';
-			// vm.simulation = {
-			// 	numFloors: '',
-			// 	numElevators: '',
-			// 	floorSpeed: ''
-			// };
-			// vm.submit = function () {
-			// 	// vm.simData = vm.simulation.first + ' ' + vm.simulation.last;
-			// 	vm.simData = appService.submitSimulation(vm.simulation.numFloors, vm.simulation.numElevators, vm.simulation.floorSpeed);
-			// };
-
-			// vm.things = null;
-			// vm.$onInit = function () {
-			// 	vm.things = appService.getAllThings();
-            // }
+			vm.$onInit = function () {
+				vm.floors = appService.getFloors();
+			};
+			vm.callElevator = function (floorId) {
+				// appService.callElevator();
+				vm.floors[floorId].isWaiting = true;
+			};
         },
 		templateUrl: 'js/floors/floors.component.html'
 	});

@@ -6,21 +6,14 @@
         controller: function (appService) {
 			var vm = this;
 
-			// vm.simData = '';
-			// vm.simulation = {
-			// 	numFloors: '',
-			// 	numElevators: '',
-			// 	floorSpeed: ''
-			// };
-			// vm.submit = function () {
-			// 	// vm.simData = vm.simulation.first + ' ' + vm.simulation.last;
-			// 	vm.simData = appService.submitSimulation(vm.simulation.numFloors, vm.simulation.numElevators, vm.simulation.floorSpeed);
-			// };
+			vm.elevators = null;
 
-			// vm.things = null;
-			// vm.$onInit = function () {
-			// 	vm.things = appService.getAllThings();
-            // }
+			vm.$onInit = function () {
+				vm.elevators = appService.getElevators();
+			};
+			vm.serviceElevator = function (elevatorId) {
+				// vm.simData = appService.resetSimulation();
+			};
         },
 		templateUrl: 'js/elevators/elevators.component.html'
 	});

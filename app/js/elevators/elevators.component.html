@@ -1,17 +1,27 @@
-<div>
-	<span>ELEVATORS</span>
-	<!--<input type="text" class="form-control" ng-model="vm.simulation.numFloors" />-->
-
-	<!--<span>Number of Elevators: </span>
-	<input type="text" class="form-control" ng-model="vm.simulation.numElevators" />
-
-	<span>Time Between Floors: </span>
-	<input type="text" class="form-control" ng-model="vm.simulation.floorSpeed" />
-
-	<br />
-	<button type="button" class="btn" ng-click="vm.submit()">Submit</button>
-	<hr />
-
-	<span>YOUR DATA IS {{ vm.simData }}</span>
-	</div>-->
+<!--<div class="row"><div class="col-md-12">ELEVATORS</div></div>-->
+<div class="row">
+	<div class="col-md-3" ng-repeat="elevator in vm.elevators">
+		<div>
+			Elevator {{ elevator.name }}
+		</div>
+		<div class="col-md-6">
+			ID: {{ elevator.id }}
+			<br />
+			Current Floor: {{ elevator.currentFloor }}
+			<br />
+			Doors Open: {{ elevator.name }}
+		</div>
+		<div class="col-md-6">
+			Moving: {{ elevator.isMoving }}
+			<br />
+			Trips: {{ elevator.totalTrips }}
+			<br />
+			Floors Passed: {{ elevator.floorsPassed }}
+		</div>
+		<div class="col-md-12">
+		</div>
+		<div ng-if="elevator.needsService">
+			<button type="button" class="btn" ng-click="vm.serviceElevator(elevator.id)">Service</button>
+		</div>
+	</div>
 </div>

@@ -1,17 +1,12 @@
+<!--<div class="row"><div class="col-md-12">FLOORS</div></div>-->
 <div>
-	<span>FLOORS</span>
-	<!--<input type="text" class="form-control" ng-model="vm.simulation.numFloors" />-->
-
-	<!--<span>Number of Elevators: </span>
-	<input type="text" class="form-control" ng-model="vm.simulation.numElevators" />
-
-	<span>Time Between Floors: </span>
-	<input type="text" class="form-control" ng-model="vm.simulation.floorSpeed" />
-
-	<br />
-	<button type="button" class="btn" ng-click="vm.submit()">Submit</button>
-	<hr />
-
-	<span>YOUR DATA IS {{ vm.simData }}</span>
-	</div>-->
+	<div ng-repeat="floor in vm.floors">
+		<div>Floor {{ floor.name }}
+			<span ng-if="floor.isWaiting">Waiting...</span>
+			<span ng-if="!floor.isWaiting">
+				<button type="button" class="btn" ng-click="vm.callElevator(floor.id)">Call</button>
+			</span>
+		</div>
+		</br>
+	</div>
 </div>
