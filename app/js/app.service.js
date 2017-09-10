@@ -3,37 +3,63 @@
 
 	angular.module('app').service('appService', function ($timeout, $interval) {
 		var self = this;
-		var name = 'tmp';
-		var things = [
+		var data = 'tmp';
+		var simData =
 			{
-				name:'thing 1'
+				numFloors:'2',
+				numElevators:'1',
+				floorSpeed:'1000',
+				floorSpeedSec:'1'
+			};
+		var elevators = [
+			{
+				id: 0,
+				totalTrips: 0,
+				destinationFloor: 0,
+				floorsPassed: 0,
+				currentFloor: 1,
+				isMoving: false,
+				needsService: false,
+				isDoorOpen:false
 			},
 			{
-				name:'thing 2'
-			},
-			{
-				name:'thing 3'
-			},
-			{
-				name:'thing 4'
-			},
-			{
-				name:'thing 5'
+				id: 1,
+				totalTrips: 0,
+				destinationFloor: 0,
+				floorsPassed: 0,
+				currentFloor: 1,
+				isMoving: false,
+				needsService: false,
+				isDoorOpen:false
 			}
 		];
-		self.getAllThings = function () {
+		var floors = [
+			{
+				id: 0,
+				isWaiting: false
+			},
+			{
+				id: 1,
+				isWaiting: false
+			}
+		];
+		self.getAllSimData = function () {
 
-			return things;
+			return simData;
 		};
 
 		self.submitSimulation = function (numFloors, numElevators, floorSpeed) {
-			name = 'floors:'+numFloors + ' elevators:' + numElevators + ' speed:' + floorSpeed;
-			// things[0].name = name;
-			// console.log(name);
-			return name;
+			data = 'floors:'+numFloors + ' elevators:' + numElevators + ' speed:' + floorSpeed;
+			simData.numFloors = numFloors;
+			simData.numElevators = numElevators;
+			simData.floorSpeed = floorSpeed;
+			simData.floorSpeedSec = floorSpeed/1000;
+			// simData[0].data = data;
+			// console.log(data);
+			return data;
 		};
-		self.getName = function () {
-			return name;
+		self.getData = function () {
+			return data;
 		};
 
 		self.stopOtherTimer = function () {

@@ -5,11 +5,11 @@
 		controllerAs: 'vm',
         controller: function (appService) {
             var vm = this;
-			// vm.things = null;
+			vm.data = null;
 
-			// vm.$onInit = function () {
-			// 	vm.things = appService.getAllThings();
-            // }
+			vm.$onInit = function () {
+				vm.data = appService.getAllSimData();
+            }
         },
 		templateUrl: 'js/status-box/status-box.component.html'
 	});

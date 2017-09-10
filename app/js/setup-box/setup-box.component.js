@@ -1,7 +1,7 @@
 (function () {
 	'use strict';
 
-	angular.module('app').component('loginBox', {
+	angular.module('app').component('setupBox', {
 		controllerAs: 'vm',
         controller: function (appService) {
 			var vm = this;
@@ -22,6 +22,6 @@
 			// 	vm.things = appService.getAllThings();
             // }
         },
-		templateUrl: 'js/login-box/login-box.component.html'
+		templateUrl: 'js/setup-box/setup-box.component.html'
 	});
 })();
