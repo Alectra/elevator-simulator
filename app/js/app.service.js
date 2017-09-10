@@ -59,7 +59,7 @@
 				floorsPassed: 0,
 				currentFloor: 1,
 				isMoving: false,
-				needsService: false,
+				needsService: true,
 				isDoorOpen: false
 			};
 		};
@@ -113,13 +113,36 @@
 		self.getData = function () {
 			return data;
 		};
+		self.callElevator = function (floorNum) {
+			//CALL ELEVATOR FUNCTIONALITY
+			/*	Psudocode
+			var elevatorFound = false
+			// if a moving elevator will pass this floor, use it
+			for each (elevator in elevators) {
+				if (elevator.moving
+						&& elevator.startFloor > floorNum
+						&& elevator.destinationFloor < floorNum) {
+					send this elevator to the calling floor
+					stop looping thru elevators
+					elevatorFound = true
+				}
+			}
+
+			// if no mopving elevator will pass this floor, find the closest stopped one
+			if (!elevatorFound) {
+				// find closeset elevator that is stopped
+			}
+
+			// add an elevator stop at floorfloorNum
+
+			// start the timer function at simData.floorSpeedSec
+
+			// add the callback for the timer to send the elevator back info when it reaches the correct floor
+
+			*/
+		};
 
 		self.resetSimulation();
-
-		// self.stopOtherTimer = function () {
-		// 	timer = 50;
-		// 	return timer;
-		// };
 
 		// var countdown = 0;
 		// self.startCountdown = function (val) {

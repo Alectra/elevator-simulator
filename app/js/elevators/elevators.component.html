@@ -23,5 +23,8 @@
 		<div ng-if="elevator.needsService">
 			<button type="button" class="btn" ng-click="vm.serviceElevator(elevator.id)">Service</button>
 		</div>
+		<div ng-if="!elevator.needsService">
+			<span>No service needed...</span>
+		</div>
 	</div>
 </div>

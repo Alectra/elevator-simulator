@@ -11,7 +11,7 @@
 				vm.floors = appService.getFloors();
 			};
 			vm.callElevator = function (floorId) {
-				// appService.callElevator();
+				appService.callElevator();
 				vm.floors[floorId].isWaiting = true;
 			};
         },

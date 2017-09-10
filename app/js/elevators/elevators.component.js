@@ -13,6 +13,7 @@
 			};
 			vm.serviceElevator = function (elevatorId) {
 				// vm.simData = appService.resetSimulation();
+				vm.elevators[elevatorId].needsService = false;
 			};
         },
 		templateUrl: 'js/elevators/elevators.component.html'
